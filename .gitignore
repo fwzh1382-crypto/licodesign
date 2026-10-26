@@ -1,0 +1,13 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Python (tools/audit.py)
+__pycache__/
+*.py[cod]
+.venv/
+
+# Optional local tooling / servers
+node_modules/
+*.log
+.arena/
