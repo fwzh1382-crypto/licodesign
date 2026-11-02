@@ -34,7 +34,7 @@
 | استایل | CSS3 خالص: متغیرها، logical properties (`inset-inline`, `padding-inline`)، Grid/Flexbox، `clamp()`، breakpointهای 1180/800/720px، حالت چاپ و `prefers-reduced-motion` |
 | رفتار | JavaScript خالص (IIFE، بدون کتابخانه): ۴۳۱ خط در `js/main.js` |
 | فونت | ۸ فایل `woff2` محلی: Vazirmatn (۵ وزن) + Outfit (۳ وزن)، همراه `font-display: swap` |
-| تصاویر | ۱۹ فایل JPG محلی، ۱ favicon SVG، آیکون‌های شبکه‌های اجتماعی به صورت inline SVG |
+| تصاویر | ۲۸ فایل JPG محلی (۱۹ تصویر قالب + ۹ تصویر پروژه/صحنه)، ۱ favicon SVG، آیکون‌های شبکه‌های اجتماعی به صورت inline SVG |
 | زیرساخت | نیازی به npm/build ندارد؛ فقط یک وب سرور استاتیک |
 
 هیچ درخواستی به CDN، فونت گوگل، آنالیتیکس یا سرویس ثالث انجام نمی‌شود.
@@ -49,7 +49,10 @@
 ├── about.html                 # دربارهٔ ما
 ├── services.html              # خدمات
 ├── projects.html              # آرشیو پروژه‌ها + فیلتر
-├── project-{aftab,haraz,acajou,darya}.html
+├── project-firuzkuh.html      # پروژه کوهستانی فیروزکوه (آسور)
+├── project-mahd-dozak.html    # مهد کودک نقش دوزک (آمل)
+├── project-club.html          # باشگاه ورزشی آمل
+├── project-cafe-amol.html     # طراحی کافه آمل
 ├── kitchen.html, living.html, bath.html, cafe.html   # چهار مجموعه
 ├── studio.html, systems.html, process.html, materials.html, showroom.html
 ├── journal.html               # مجله/مقالات
@@ -75,9 +78,21 @@
 | --- | --- |
 | اصلی و منو | `index.html`, `services.html`, `projects.html`, `journal.html`, `about.html`, `contact.html` |
 | مجموعه‌ها | `kitchen.html`, `living.html`, `bath.html`, `cafe.html` |
-| پروژه‌های نمونه | `project-aftab.html`, `project-haraz.html`, `project-acajou.html`, `project-darya.html` |
+| پروژه‌ها (واقعی) | `project-firuzkuh.html`, `project-mahd-dozak.html`, `project-club.html`, `project-cafe-amol.html` |
 | استودیو/سیستم | `studio.html`, `systems.html`, `process.html`, `materials.html`, `showroom.html` |
 | حقوقی | `privacy.html`, `cookies.html` |
+
+### پروژه‌های واقعی (بخش «نمونه کارها، امضای کیفیت»)
+
+| پروژه | مکان | اطلاعات | تصویر |
+| --- | --- | --- | --- |
+| پروژه کوهستانی فیروزکوه | روستای آسور | زمین ۵۰۰ متر، بنا ۱۰۰ متر، کارفرما خانم قاسمی | `proj-firuzkuh.jpg` |
+| مهد کودک و آموزشگاه نقش دوزک | آمل، آفتاب ۳۱ | کارفرما خانم اکبری، طراحی ۱۴۰۲ | `proj-mahd-dozak.jpg` |
+| باشگاه ورزشی آمل | آمل | کارفرما خانم پرستار، ۱۴۰۵، ۱۵۵ متر | `proj-club.jpg` (+ `proj-club-2.jpg`) |
+| طراحی کافه آمل | آمل | طراحی داخلی و اجرا | `proj-cafe-amol.jpg` |
+
+عکس قهرمان صفحهٔ اصلی (`hero.jpg`) و همین تصویر با شفافیت ۱۰٪ به‌عنوان پس‌زمینهٔ
+بخش شو روم استفاده می‌شود.
 
 هر صفحه شامل `<title>` و `meta description` منحصربه‌فرد، `og:title`، `og:description`،
 `theme-color`، پیش‌بارگذاری ۲ فونت و هدر/فوتر مشترک است. وضعیت منوی فعال از روی
@@ -137,8 +152,8 @@ node --check js/main.js           # صحت نحوی جاوااسکریپت
 npx html-validate "*.html"        # اعتبارسنجی HTML (ابزار خارجی، اختیاری)
 ```
 
-وضعیت فعلی `tools/audit.py`: **۰ خطا، ۷ هشدار** (صفحات یتیم، `h1` ناموجود،
-`alt`/ابعاد تصاویر و مقادیر نمونه). خلاصهٔ کامل یافته‌ها، اولویت‌ها و پیشنهادهای اصلاحی
+وضعیت فعلی `tools/audit.py`: **۰ خطا، ۳ هشدار** (سه صفحهٔ یتیم، `alt` خالی روی
+تصاویر تزئینی و لینک عمومی یوتیوب در فوتر). خلاصهٔ کامل یافته‌ها، اولویت‌ها و پیشنهادهای اصلاحی
 در **[REVIEW.md](REVIEW.md)** آمده است.
 
 ---

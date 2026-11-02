@@ -15,8 +15,8 @@
       "menu": "منو",
       "close": "بستن",
       "hero-kicker": "معماری داخلی • سیستم آشپزخانه لوکس",
-      "hero-1": "از ایده تا اجرا با لایکو",
-      "hero-2": "دیزاین",
+      "hero-1": "لایکودیزاین،",
+      "hero-2": "فراتر از طراحی",
       "hero-lede": "لایکو دیزاین؛ طراحی و اجرای آشپزخانه، پذیرایی و اتاق، حمام و فضاهای کافه-رستوران با زبان مینیمال و متریال صادق.",
       "col-eye": "۰۱ — مجموعه‌ها",
       "col-title": "چهار فضا، یک استاندارد ساخت",
@@ -32,14 +32,17 @@
       "tag-interior": "معماری داخلی",
       "tag-cafe": "کافه و رستوران",
       "tag-bath": "حمام",
-      "p-aftab": "پنت‌هاوس آفتاب",
-      "p-haraz": "ویلای هراز",
-      "p-acajou": "کافه اکاژو",
-      "p-darya": "خانه دریا",
-      "m-aftab": "۳۱۰ مترمربع • ۱۴۰۳",
-      "m-haraz": "۴۲۰ مترمربع • ۱۴۰۴",
-      "m-acajou": "۱۸۰ مترمربع • ۱۴۰۴",
-      "m-darya": "۱۶۰ مترمربع • ۱۴۰۳",
+      "tag-mountain": "کوهستانی",
+      "tag-edu": "فضای آموزشی",
+      "tag-sport": "باشگاه ورزشی",
+      "p-firuzkuh": "پروژه کوهستانی فیروزکوه",
+      "p-dozak": "مهد کودک نقش دوزک",
+      "p-club": "باشگاه ورزشی آمل",
+      "p-cafe-amol": "طراحی کافه آمل",
+      "m-firuzkuh": "آسور • ۱۰۰ متر بنا",
+      "m-dozak": "آمل، آفتاب ۳۱ • ۱۴۰۲",
+      "m-club": "۱۵۵ مترمربع • ۱۴۰۵",
+      "m-cafe-amol": "آمل • طراحی داخلی",
       "why-eye": "۰۳ — استودیو",
       "why-quote": "چرا لایکو دیزاین؟ چون از اولین اسکچ تا آخرین پیچ نصب، یک تیم و یک استاندارد پشت کار شماست؛ متریال صادق، اجرای دقیق و تعهدی که سال‌ها بعد از تحویل هم همراه شما می‌ماند.",
       "st-projects": "پروژه اجراشده",
@@ -61,6 +64,7 @@
       "addr-v": "آمل، دریای ۲۰",
       "hours": "ساعات",
       "hours-v": "شنبه تا پنجشنبه، ۱۰ تا ۱۹",
+      "phone-v": "۰۹۱۲ ۰۸۹ ۸۹۳۸",
       "phone": "تماس",
       "form-eye": "۰۶ — شروع پروژه",
       "form-1": "چطور می‌توانیم",
@@ -115,8 +119,8 @@
       "menu": "Menu",
       "close": "Close",
       "hero-kicker": "Interior architecture • Luxury kitchen system",
-      "hero-1": "From the idea to the last screw,",
-      "hero-2": "with Laico Design",
+      "hero-1": "Laico Design,",
+      "hero-2": "beyond design",
       "hero-lede": "Laico Design plans and builds kitchens, living rooms, baths, and café spaces in a minimal language, with honest materials.",
       "col-eye": "01 — Collections",
       "col-title": "Four rooms, one standard of making",
@@ -132,14 +136,17 @@
       "tag-interior": "Interior",
       "tag-cafe": "Café",
       "tag-bath": "Bath",
-      "p-aftab": "Penthouse Aftab",
-      "p-haraz": "Villa Haraz",
-      "p-acajou": "Café Acajou",
-      "p-darya": "House Darya",
-      "m-aftab": "310 m² • 2024",
-      "m-haraz": "420 m² • 2025",
-      "m-acajou": "180 m² • 2025",
-      "m-darya": "160 m² • 2024",
+      "p-firuzkuh": "Firuzkuh Mountain House",
+      "p-dozak": "Naghsh Dozak Kindergarten",
+      "p-club": "Amol Fitness Club",
+      "p-cafe-amol": "Café Amol",
+      "m-firuzkuh": "Asur • 100 m² built",
+      "m-dozak": "Amol, Aftab 31 • 2023",
+      "m-club": "155 m² • 2026",
+      "m-cafe-amol": "Amol • Interior",
+      "tag-mountain": "Mountain",
+      "tag-edu": "Learning space",
+      "tag-sport": "Fitness club",
       "why-eye": "03 — Studio",
       "why-quote": "Why Laico? Because one team and one standard stay with the work, from the first sketch to the last screw. Honest materials, precise installation, and a commitment that remains years after handover.",
       "st-projects": "Completed projects",
@@ -161,6 +168,7 @@
       "addr-v": "Amol, Darya 20",
       "hours": "Hours",
       "hours-v": "Saturday to Thursday, 10–19",
+      "phone-v": "+98 912 089 8938",
       "phone": "Phone",
       "form-eye": "06 — Start a project",
       "form-1": "How should we",
@@ -276,8 +284,24 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") setMenu(false);
   });
+  if (window.matchMedia) {
+    var desktop = window.matchMedia("(min-width: 801px)");
+    var onViewport = function (e) { if (e.matches) setMenu(false); };
+    if (desktop.addEventListener) desktop.addEventListener("change", onViewport);
+    else if (desktop.addListener) desktop.addListener(onViewport);
+  }
 
   /* active nav */
+  /* progress marks under the featured project grid */
+  var grid = document.querySelector(".project-grid");
+  if (grid) {
+    var dots = document.createElement("div");
+    dots.className = "grid-progress";
+    dots.setAttribute("aria-hidden", "true");
+    for (var d = 0; d < 4; d++) dots.appendChild(document.createElement("span"));
+    grid.parentElement.appendChild(dots);
+  }
+
   var page = document.body.getAttribute("data-page");
   if (page) {
     document.querySelectorAll("[data-nav]").forEach(function (a) {
@@ -392,7 +416,11 @@
       var note = (form.querySelector('[name="note"]') || {}).value || "";
       setError("name", name.trim().length < 2 ? "err-name" : "");
       var digits = phone.replace(/\D/g, "");
-      setError("phone", digits.length < 8 ? "err-phone" : "");
+      if (digits.indexOf("0098") === 0) digits = digits.slice(4);
+      else if (digits.indexOf("98") === 0 && digits.length > 10) digits = digits.slice(2);
+      if (digits.charAt(0) === "0") digits = digits.slice(1);
+      var phoneOK = /^9\d{9}$/.test(digits);
+      setError("phone", phoneOK ? "" : "err-phone");
       setError("note", note.trim().length < 4 ? "err-note" : "");
       if (!ok) {
         var bad = form.querySelector(".is-invalid input, .is-invalid textarea");
@@ -401,7 +429,7 @@
       }
       var payload = {
         name: name.trim(),
-        phone: "+98 " + digits,
+        phone: "+98" + digits,
         type: (form.querySelector('[name="type"]') || {}).value || "",
         note: note.trim(),
         at: new Date().toISOString()
