@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """LAICO DESIGN — static template audit (no third-party dependencies).
 
-Checks the 21 HTML pages, the stylesheet and the JavaScript dictionary for:
+Checks the HTML pages, the stylesheets and the JavaScript dictionary for:
 
   * broken internal links, fragments and missing assets (ERROR)
   * duplicate id attributes (ERROR)
@@ -141,6 +141,9 @@ def main() -> int:
     fa, en = dictionary_keys(script, "fa"), dictionary_keys(script, "en")
     used = {key for page in pages.values() for key in page.i18n_keys}
     used |= set(re.findall(r'\bt\("([^"]+)"\)', script))
+    # keys injected at runtime through announce()/setError()/t(variable) also
+    # appear as string literals somewhere in the script — treat them as used.
+    used |= set(re.findall(r'"([A-Za-z0-9_-]+)"', script)) & (fa | en)
     for key in sorted(used - fa):
         errors.append(f"i18n: key '{key}' used in HTML/JS but missing from fa dict")
     for key in sorted(used - en):
@@ -148,7 +151,7 @@ def main() -> int:
     unused = sorted(fa - used)
 
     # --- content hygiene --------------------------------------------------
-    no_h1, no_alt, no_dims, empty_alt = [], 0, 0, 0
+    no_h1, no_alt, no_dims, empty_alt, unmarked_deco = [], 0, 0, 0, 0
     for name, page in pages.items():
         if page.h1 != 1:
             no_h1.append(f"{name} ({page.h1} h1)")
@@ -157,17 +160,21 @@ def main() -> int:
                 no_alt += 1
             elif not img["alt"]:
                 empty_alt += 1
+                # decorative is fine, but it must be signalled explicitly
+                if img.get("aria-hidden") != "true":
+                    unmarked_deco += 1
             if not img.get("width") or not img.get("height"):
                 no_dims += 1
     if no_h1:
         warnings.append("pages without exactly one h1: " + ", ".join(no_h1))
-    if no_alt or no_dims or empty_alt:
+    if no_alt or no_dims or unmarked_deco:
         warnings.append(
-            f"images: {no_alt} without alt, {empty_alt} decorative alt=\"\", "
-            f"{no_dims} without width/height"
+            f"images: {no_alt} without alt, {empty_alt} decorative "
+            f"({unmarked_deco} lacking aria-hidden), {no_dims} without width/height"
         )
 
-    orphans = sorted(set(pages) - linked_pages)
+    # 404 is intentionally never linked from the navigation
+    orphans = sorted(set(pages) - linked_pages - {"404.html"})
     if orphans:
         warnings.append("orphan pages (no inbound link): " + ", ".join(orphans))
 

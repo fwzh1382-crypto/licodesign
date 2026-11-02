@@ -1,0 +1,20 @@
+{
+  "name": "Laico Design — لایکو دیزاین",
+  "short_name": "Laico",
+  "description": "Interior architecture and luxury kitchen systems.",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#071425",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

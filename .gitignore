@@ -11,3 +11,8 @@ __pycache__/
 node_modules/
 *.log
 .arena/
+
+# Local QA tooling (generated release ZIP is intentionally committed: the
+# sandbox cannot reach uploads.github.com to attach it as a release asset)
+.qa/
+.work/
