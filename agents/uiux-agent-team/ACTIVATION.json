@@ -1,0 +1,49 @@
+{
+  "active": true,
+  "team": "uiux-elite-team",
+  "version": "1.0.0",
+  "language": "fa",
+  "knowledge_date": "2026-10",
+  "source_repo": "https://github.com/amolnovin/aiagent.amolnovin",
+  "source_path": "teams/ui-ux",
+  "source_zip": "agents/uiux-agent-team/_source/uiux-agent-team.zip",
+  "source_zip_sha256": "b8013fe61ca8599cbd8fe56cdf25c6f9224af5261b61c4ebd8b879f30d0ae627",
+  "activation_prompt": "agents/uiux-agent-team/ACTIVATE.md",
+  "manifest": "agents/uiux-agent-team/agents.json",
+  "agents": [
+    {
+      "id": "ui-01-research",
+      "name_fa": "تحلیلگر پژوهش و بنچمارک",
+      "playbook": "agents/01_research_benchmark.md"
+    },
+    {
+      "id": "ui-02-ux-strategy",
+      "name_fa": "استراتژیست تجربه کاربری و معمار اطلاعات",
+      "playbook": "agents/02_ux_strategy.md"
+    },
+    {
+      "id": "ui-03-visual-design",
+      "name_fa": "طراح بصری و سیستم طراحی",
+      "playbook": "agents/03_visual_ui_design.md"
+    },
+    {
+      "id": "ui-04-motion",
+      "name_fa": "مهندس حرکت و تعامل",
+      "playbook": "agents/04_motion_interaction.md"
+    },
+    {
+      "id": "ui-05-frontend-qa",
+      "name_fa": "توسعه‌دهنده فرانت‌اند و مسئول کیفیت",
+      "playbook": "agents/05_frontend_qa.md"
+    }
+  ],
+  "subagents": [
+    ".claude/agents/ui-01-research.md",
+    ".claude/agents/ui-02-ux-strategy.md",
+    ".claude/agents/ui-03-visual-design.md",
+    ".claude/agents/ui-04-motion.md",
+    ".claude/agents/ui-05-frontend-qa.md"
+  ],
+  "repo_router": "AGENTS.md",
+  "output_dir": "agents/uiux-agent-team/output"
+}

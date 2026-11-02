@@ -1,0 +1,340 @@
+/* LAICO DESIGN — services.html (scoped overrides)
+   Desktop layout rebuilt from the attached design reference (خدمات.png + image-1..8).
+   Only services.html loads this file; the global css/styles.css stays untouched.
+   Structure: hero -> 5 alternating service rows -> "why" band -> consultation form
+   Breakpoints: 1000px (tablet) and 640px (mobile). Logical properties keep RTL/LTR. */
+
+:root {
+  --svc-navy: #020c3b;
+  --svc-ink: #14161c;
+  --svc-muted: #5a6472;
+  --svc-line: #eceef1;
+  --svc-field: #f2f3f5;
+  --svc-pad: clamp(20px, 4.2vw, 72px);
+}
+
+/* ---------- readability of the fixed header over the light hero photo ---------- */
+body[data-page="services"] .site-header:not(.is-scrolled):not(.is-open) {
+  background: rgba(7, 20, 37, 0.42);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- hero ---------- */
+.svc-hero {
+  position: relative;
+  min-height: clamp(420px, 43vw, 600px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #0b1d33;
+}
+.svc-hero > img,
+.svc-hero > picture > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+.svc-hero-band {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 31%;
+  background: rgba(2, 12, 59, 0.62);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.svc-hero-copy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 24px var(--svc-pad) clamp(30px, 3.6vw, 52px);
+  text-align: start;
+  color: #fff;
+}
+.svc-hero-copy h1 {
+  font-size: clamp(30px, 3.5vw, 50px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.22);
+}
+.svc-hero-copy p {
+  margin-top: 8px;
+  font-size: clamp(14px, 1.25vw, 18px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.92);
+}
+.svc-scroll {
+  position: absolute;
+  left: clamp(20px, 4vw, 56px);
+  bottom: clamp(22px, 3vw, 42px);
+  z-index: 2;
+  display: block;
+  width: 52px;
+  height: 26px;
+  transition: transform .25s ease;
+}
+.svc-scroll:hover, .svc-scroll:focus-visible { transform: translateY(6px); }
+.svc-scroll svg { width: 100%; height: 100%; display: block; }
+@keyframes svc-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ---------- service rows (desktop: two columns, alternating) ---------- */
+.svc-list { padding-block: clamp(36px, 4.4vw, 72px); background: #fff; }
+.svc-row {
+  width: min(1320px, 100%);
+  margin-inline: auto;
+  padding: clamp(20px, 2.4vw, 36px) var(--svc-pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4.2vw, 72px);
+  align-items: center;
+  border-bottom: 1px solid #f3f4f6;
+}
+.svc-row:last-child { border-bottom: 0; }
+.svc-row--rev .svc-media { order: 2; }
+.svc-row--rev .svc-copy { order: 1; }
+
+.svc-media {
+  min-width: 0;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid var(--svc-line);
+}
+.svc-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+.svc-copy { min-width: 0; padding-block: 12px; }
+.svc-num {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  color: #5a6472;
+  text-align: start;
+  margin-bottom: clamp(8px, 1vw, 14px);
+}
+.svc-copy h2 {
+  font-size: clamp(22px, 2.15vw, 31px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--svc-ink);
+  text-align: start;
+  margin-bottom: clamp(10px, 1.2vw, 18px);
+}
+.svc-copy p {
+  max-width: 48ch;
+  font-size: clamp(14.5px, 1.15vw, 17px);
+  font-weight: 300;
+  line-height: 2.15;
+  color: var(--svc-muted);
+  text-align: start;
+  margin-bottom: clamp(20px, 2.4vw, 34px);
+}
+.svc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--svc-navy);
+  color: #fff;
+  font-size: 13.5px;
+  line-height: 1.4;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.svc-btn:hover { background: #14245c; transform: translateY(-2px); }
+.svc-btn .svc-arrow { display: inline-flex; align-items: center; direction: ltr; opacity: 0.9; }
+.svc-btn .svc-arrow svg { width: 9px; height: 12px; display: block; }
+
+/* ---------- dark "why" band ---------- */
+.svc-why { background: var(--svc-navy); color: #fff; }
+.svc-why-inner {
+  width: min(1320px, 100%);
+  margin-inline: auto;
+  padding: clamp(44px, 5.2vw, 80px) var(--svc-pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(230px, 26vw, 370px);
+  gap: clamp(28px, 5vw, 84px);
+  align-items: center;
+}
+.svc-why-copy h2 {
+  font-size: clamp(18px, 1.55vw, 23px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: start;
+  margin-bottom: clamp(14px, 1.8vw, 26px);
+}
+.svc-why-copy p {
+  max-width: 64ch;
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-weight: 300;
+  line-height: 2.15;
+  color: rgba(255, 255, 255, 0.82);
+  text-align: start;
+}
+.svc-why-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3.5;
+  object-fit: cover;
+  display: block;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- consultation ---------- */
+.svc-consult { padding: clamp(50px, 6vw, 96px) var(--svc-pad); background: #fff; }
+.svc-consult-grid {
+  width: min(1220px, 100%);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3.6vw, 56px);
+  align-items: stretch;
+}
+.svc-panel {
+  background: var(--svc-navy);
+  color: #fff;
+  padding: clamp(28px, 3.4vw, 52px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.svc-panel-eyebrow {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.66);
+  text-align: start;
+  margin-bottom: 14px;
+}
+.svc-panel h2 {
+  font-size: clamp(24px, 2.4vw, 36px);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: start;
+  margin-bottom: clamp(18px, 2.2vw, 30px);
+}
+.svc-rule { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.32); margin: 0 0 clamp(20px, 2.4vw, 34px); }
+.svc-info + .svc-info { margin-top: clamp(18px, 2vw, 28px); }
+.svc-info-label { font-size: 13.5px; font-weight: 300; color: rgba(255, 255, 255, 0.68); text-align: start; }
+.svc-info-value {
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(17px, 1.7vw, 23px);
+  font-weight: 400;
+  color: #fff;
+  text-align: start;
+}
+.svc-info-value a { color: inherit; }
+
+.svc-form-col { display: flex; align-items: center; min-width: 0; }
+.svc-form { width: 100%; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.svc-form[hidden] { display: none; }         /* keep the JS form.hidden = true working */
+.svc-field { width: 100%; min-width: 0; }
+.svc-field input,
+.svc-field textarea {
+  width: 100%;
+  display: block;
+  background: var(--svc-field);
+  border: 1px solid var(--svc-line);
+  border-radius: 2px;
+  padding: 15px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--svc-ink);
+  text-align: start;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.svc-field textarea { min-height: 120px; resize: vertical; line-height: 1.8; }
+.svc-field input::placeholder,
+.svc-field textarea::placeholder { color: #5f6368; }
+.svc-field input:focus,
+.svc-field textarea:focus { border-color: var(--svc-navy); background: #fff; }
+.svc-field.is-invalid input,
+.svc-field.is-invalid textarea { border-color: #a44545; }
+.svc-form .field-error { display: block; margin-top: 5px; font-size: 12.5px; color: #a44545; text-align: start; }
+.svc-submit {
+  margin-top: 6px;
+  padding: 14px 36px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--svc-navy);
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.svc-submit:hover { background: #14245c; }
+.svc-done { padding: 26px; border: 1px solid var(--svc-line); background: #fafbfc; text-align: start; }
+.svc-done[hidden] { display: none; }
+.svc-done h3 { font-size: 21px; font-weight: 500; color: var(--svc-ink); }
+.svc-done p { margin-top: 8px; font-size: 14.5px; color: var(--svc-muted); }
+
+/* ---------- tablet / mobile (responsive) ---------- */
+@media (max-width: 1000px) {
+  .svc-hero { min-height: clamp(340px, 54vw, 460px); }
+  .svc-hero-band { height: 36%; }
+  .svc-row { grid-template-columns: 1fr; gap: 22px; padding-block: 26px; }
+  .svc-row .svc-media { order: -1; }
+  .svc-row .svc-copy { order: 0; }
+  .svc-media img { aspect-ratio: 16 / 9; }
+  .svc-copy { padding-block: 0; }
+  .svc-copy p { max-width: none; }
+  .svc-why-inner { grid-template-columns: 1fr; }
+  .svc-why-media { max-width: 420px; }
+  .svc-consult-grid { grid-template-columns: 1fr; }
+  .svc-form-col { padding-inline: 0; }
+}
+
+@media (max-width: 640px) {
+  .svc-hero { min-height: 300px; }
+  .svc-hero-band { height: 42%; }
+  .svc-hero-copy { padding-bottom: 26px; }
+  .svc-hero-copy h1 { font-size: clamp(24px, 7vw, 30px); }
+  .svc-hero-copy p { font-size: 12.5px; line-height: 1.9; }
+  .svc-scroll { width: 36px; height: 18px; bottom: 16px; }
+  .svc-num { font-size: 12.5px; }
+  .svc-copy h2 { font-size: clamp(19px, 5.4vw, 23px); line-height: 1.6; }
+  .svc-copy p { font-size: 14px; line-height: 2; margin-bottom: 20px; }
+  .svc-media { padding: 5px; }
+  .svc-media img { aspect-ratio: 3 / 2; }
+  .svc-btn { font-size: 13px; padding: 11px 18px; }
+  .svc-why-copy p { font-size: 15px; line-height: 2; }
+  .svc-why-media img { aspect-ratio: 3 / 2; }
+  .svc-panel { padding: 26px 22px; }
+  .svc-panel h2 { font-size: 24px; }
+  .svc-field input, .svc-field textarea { padding: 14px 15px; font-size: 14.5px; }
+  .svc-submit { width: 100%; }
+}
+
+/* ---------- small internal-links strip (keeps template pages reachable) ---------- */
+.svc-related {
+  width: min(1320px, 100%);
+  margin-inline: auto;
+  padding: 22px var(--svc-pad) 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  border-top: 1px solid #f3f4f6;
+  font-size: 12.5px;
+  color: #9aa1ac;
+}
+.svc-related-label { color: #5a6472; }
+.svc-related a { color: #5a6472; }
+.svc-related a:hover { color: var(--svc-navy); }
+
+/* ---------- fix: the global skip link peeks ~6px above the header ---------- */
+body[data-page="services"] .skip { top: -80px; }
+body[data-page="services"] .skip:focus { top: 12px; }
